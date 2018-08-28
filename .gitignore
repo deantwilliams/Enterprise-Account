@@ -1,0 +1,11 @@
+.settings
+
+target/
+
+.classpath
+
+.project
+
+sonar-project.properties
+
+.scannerwork
