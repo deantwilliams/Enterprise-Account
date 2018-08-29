@@ -1,5 +1,8 @@
-package com.qa.service.repository;
+package com.qa.service;
 
+import java.util.List;
+
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -7,12 +10,11 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
-import java.util.List;
 import com.qa.domain.Account;
 import com.qa.util.JSONUtil;
 
-@Transactional(TxType.SUPPORTS)
-public class AccountDBRepository {
+@Default
+public class AccountServiceDBImp implements IAccountService {
 
 	@PersistenceContext(unitName="primary")
 	private EntityManager manager;
@@ -59,10 +61,9 @@ public class AccountDBRepository {
 		return "Account has been deleted";
 	}
 	
-	private Account findAccount(long id)
+	public Account findAccount(long id)
 	{
 		return manager.find(Account.class, id);
 	}
-	
-	
+
 }
